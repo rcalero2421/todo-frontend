@@ -1,0 +1,79 @@
+<div class="w-full px-8 py-10 bg-gradient-to-br from-[#9dc2bb] to-[#f5f9ff] min-h-[calc(100vh-8rem)]">
+  <div class="flex flex-col lg:flex-row items-center justify-between bg-white rounded-2xl shadow-xl p-8">
+    <div class="mb-6 lg:mb-0">
+      <h2 class="text-4xl font-extrabold text-[#3e64c9]">Hey {{ (user$ | async)?.name || 'there' }} 👋</h2>
+      <p class="text-gray-600 mt-2 max-w-md">
+        Welcome to <span class="font-semibold text-[#3e64c9]">Todover</span>, your minimalist productivity space. Let’s
+        conquer today’s tasks!
+      </p>
+    </div>
+    <img src="./assets/img/login_img.png" alt="Dashboard Illustration" class="w-56 sm:w-72 lg:w-32" />
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+    <div class="bg-[#f4f7ff] rounded-xl shadow-lg p-6 flex items-start gap-4 hover:scale-[1.02] transition">
+      <i class="pi pi-list text-3xl text-[#3e64c9] mt-1"></i>
+      <div>
+        <p class="text-sm text-gray-500">Total Tasks</p>
+        <h3 class="text-2xl font-bold text-[#3e64c9]">{{ taskCounts.total }}</h3>
+      </div>
+    </div>
+
+    <div class="bg-[#fff7e6] rounded-xl shadow-lg p-6 flex items-start gap-4 hover:scale-[1.02] transition">
+      <i class="pi pi-calendar-plus text-3xl text-yellow-600 mt-1"></i>
+      <div>
+        <p class="text-sm text-gray-500">To Do</p>
+        <h3 class="text-2xl font-bold text-yellow-600">{{ taskCounts.todo }}</h3>
+      </div>
+    </div>
+
+    <div class="bg-[#e5f2ff] rounded-xl shadow-lg p-6 flex items-start gap-4 hover:scale-[1.02] transition">
+      <i class="pi pi-spinner text-3xl text-blue-500 mt-1 animate-spin-slow"></i>
+      <div>
+        <p class="text-sm text-gray-500">In Progress</p>
+        <h3 class="text-2xl font-bold text-blue-500">{{ taskCounts.inProgress }}</h3>
+      </div>
+    </div>
+
+    <div class="bg-[#e8f5ec] rounded-xl shadow-lg p-6 flex items-start gap-4 hover:scale-[1.02] transition">
+      <i class="pi pi-check-circle text-3xl text-green-500 mt-1"></i>
+      <div>
+        <p class="text-sm text-gray-500">Completed</p>
+        <h3 class="text-2xl font-bold text-green-500">{{ taskCounts.completed }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12 bg-white rounded-2xl shadow-xl p-6 flex flex-col lg:flex-row justify-between items-center gap-6">
+    <div>
+      <h4 class="text-xl font-semibold text-[#3e64c9]">Need a hand?</h4>
+      <p class="text-sm text-gray-500 mt-1">
+        Browse the help center or start creating your tasks right away.
+      </p>
+    </div>
+    <div class="flex gap-4">
+      <button
+        class="bg-primary hover:bg-[#008f8b] text-white px-6 py-2 rounded-full flex items-center gap-2 text-sm font-medium"
+        (click)="goToTasks()">
+        <i class="pi pi-folder-open"></i>
+        Manage Tasks
+      </button>
+      <button (click)="openHelp()"
+        class="border border-[#3e64c9] text-[#3e64c9] px-6 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-[#f0f4ff]">
+        <i class="pi pi-info-circle"></i>
+        Help
+      </button>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Help Center" [(visible)]="showHelpDialog" [modal]="true" [style]="{ width: '30vw' }">
+  <p class="text-sm text-gray-600 leading-relaxed">
+    Welcome to the help section! Here's what you can do:
+  </p>
+  <ul class="list-disc pl-5 mt-2">
+    <li>📋 View your tasks grouped by status</li>
+    <li>✅ Mark them as completed</li>
+    <li>➕ Go to the task board and create new ones</li>
+  </ul>
+</p-dialog>

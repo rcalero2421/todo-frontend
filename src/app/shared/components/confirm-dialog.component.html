@@ -1,0 +1,21 @@
+<div>
+  <div class="p-d-flex p-jc-center p-mt-2 btns-dialog-custom">
+    <p>{{ config.data.message }}</p>
+  </div>
+  <div class="p-d-flex p-jc-center p-mt-2 btns-dialog-custom mt-10">
+    <button
+      type="button"
+      (click)="accept()"
+      class="mr-2 text-white px-4 py-2 rounded font-semibold bg-[#00B7B5] hover:bg-[#00a8a3] transition-all"
+    >
+      Accept
+    </button>
+    <button
+      type="button"
+      (click)="close()"
+      class="px-4 py-2 rounded font-semibold bg-red-500 text-white hover:bg-red-600 transition-all"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

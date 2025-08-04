@@ -1,0 +1,46 @@
+<div class="w-full px-8 py-10 bg-gradient-to-br from-[#9dc2bb] to-[#f5f9ff] min-h-[calc(100vh-8rem)]">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">Tasks Board</h1>
+    <button
+      class="bg-primary hover:bg-[#008f8b] text-white px-6 py-2 rounded-full flex items-center gap-2 text-sm font-medium shadow-md transition duration-300"
+      (click)="openNewTaskForm()">
+      <i class="pi pi-plus-circle"></i>
+      New Task
+    </button>
+  </div>
+  <div class="bg-white border-l-4 border-blue-400 p-4 rounded shadow mb-6 flex items-start gap-3">
+    <i class="pi pi-info-circle text-blue-500 text-lg mt-0.5"></i>
+    <div class="text-sm text-gray-700">
+      You can <span class="font-medium">create</span> tasks using the <strong>New Task</strong> button. Each task can be
+      in one of three statuses: <strong>To Do</strong>, <strong>In Progress</strong>, or <strong>Completed</strong>. You
+      can
+      <span class="font-medium">edit</span> or <span class="font-medium">delete</span> tasks by clicking the icons, and
+      <span class="font-medium">move</span> them between columns by dragging and dropping.
+    </div>
+  </div>
+
+  <ng-container *ngIf="localTasks as tasks">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div *ngFor="let status of statuses">
+        <div class="mb-4">
+          <h2 class="text-xl font-semibold text-gray-700 uppercase tracking-wide">
+            {{ status.replace('_', ' ') }}
+          </h2>
+        </div>
+        <div cdkDropList id="{{ status }}" [cdkDropListData]="filterTasksByStatus(tasks, status)"
+          [cdkDropListConnectedTo]="dropListIds" (cdkDropListDropped)="drop($event, status)"
+          class="min-h-[500px] space-y-4 p-2 rounded-lg bg-white shadow-md border border-gray-200">
+          <app-task-item *ngFor="let task of filterTasksByStatus(tasks, status); trackBy: trackByTask" [task]="task"
+            (edit)="editExistingTask($event)" (delete)="deleteTask($event)" cdkDrag [cdkDragData]="task">
+          </app-task-item>
+        </div>
+
+
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div *ngIf="showForm" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <app-task-form [task]="editTask" [userId]="userId" (save)="onSaveTask()" (cancel)="onCancelForm()"></app-task-form>
+</div>

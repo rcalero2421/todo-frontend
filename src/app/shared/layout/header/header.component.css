@@ -1,0 +1,13 @@
+:host ::ng-deep .p-toolbar {
+  background-color: white !important;
+}
+
+@media screen and (max-width: 482px){
+  .xtra-small-text{
+    font-size: 8px !important;
+  }
+}
+
+.actions-header {
+  color: var(--color-primary);
+}

@@ -1,0 +1,41 @@
+<div class="hidden md:block">
+  <div
+    class="card-styles overflow-hidden w-48 space-y-6 pt-7 px-1 bg-white inset-y-0 left-0 ml-6 mr-2">
+    <div class="container-sidebar h-screen">
+      <button
+        *ngFor="let option of menuOptions$ | async"
+        class="font-bold py-2 my-0.5 mx-3 px-4 rounded-full hover:text-white"
+        [routerLink]="option.path"
+        routerLinkActive="button-selected">
+        {{ option.data?.title }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="sidebar-mobile" class="block md:hidden">
+  <div class="card flex justify-content-center">
+    <p-sidebar [(visible)]="sidebarVisible">
+      <div class="container-sidebar">
+        <button
+          *ngFor="let option of menuOptions$ | async"
+          class="font-bold py-2 my-0.5 mx-3 px-4 rounded-full hover:text-white"
+          (click)="toggleSidebar()"
+          [routerLink]="option.path"
+          routerLinkActive="button-selected">
+          {{ option.data?.title }}
+        </button>
+      </div>
+      <div class="py-10 px-5 absolute bottom-10 flex">
+        <span class="name-span-styles pr-2 pl-2">{{
+          (user$ | async)?.name
+        }}</span>
+        <p-splitButton
+          [label]="(user$ | async)?.email"
+          [model]="items"
+          (onClick)="clickButton()"
+          class="button-text button-secondary mr-2 ml-2 mb-2 actions-header text-blue-600" />
+      </div>
+    </p-sidebar>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<p-toolbar ngClass="p-bg-white">
+  <div class="p-toolbar-group-start bg-white ml-10">
+    <button (click)="toggleMenu()" class="border-none bg-transparent">
+      <i
+        class="hidden tablet-show mr-2 secondary-text pi pi-bars cursor-pointer text-2xl"></i>
+    </button>
+    <img class="w-12 md:w-28 h-22" src="assets/img/logo-small.png" alt="logo" />
+  </div>
+  <div class="p-toolbar-group-end mt-4">
+    <span class="name-span-styles ml-10 pl-2 pr-2 mb-1 tablet-hidden">
+      {{ (user$ | async)?.role }}
+    </span>
+    <p-splitButton
+      [label]="(user$ | async)?.email"
+      [model]="items"
+      [iconPos]="'right'"
+      (onClick)="clickButton()"
+      class="button-text button-primary mr-2 ml-2 mb-2 tablet-hidden actions-header"
+      styleClass="text-sm" />
+  </div>
+</p-toolbar>
