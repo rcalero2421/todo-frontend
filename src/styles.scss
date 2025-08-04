@@ -1,1 +1,246 @@
-/* You can add global styles to this file, and also import other style files */
+/* theme.css */
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Variables */
+:root {
+  --color-white: #FFFFFF;
+  --color-blue: #3066D0;
+  --color-blue-light: #B0C7F9;
+  --color-blue-lighter: #e0e9fd;
+  --color-green: #82D498;
+  --color-green-dark: #4c8550;
+  --color-gray: #707070;
+  --color-gray-light: #c2bdbd;
+  --color-primary: #00A8A3;
+  --color-primary-hover: #008f8b;
+  --color-secondary: #8ac685;
+  --color-red: #f84c4c;
+  --color-shadow: rgba(226, 226, 226, 0.81);
+  --font-family: 'Montserrat', sans-serif;
+  --color-circle: #A3EB95;
+  --color-circle-border: #E5F8E2;
+  --color-table-row: #F0F4FE;
+  --color-table-row-text: #3F5697;
+  --color-button-green: #00A8A3;
+}
+
+/* Body Styles */
+body {
+  font-family: var(--font-family);
+}
+
+/* Container Sidebar */
+.container-sidebar button {
+  width: 130px;
+  font-size: 14px;
+  text-align: left;
+  color: var(--color-gray);
+  font-weight: 400;
+}
+
+.container-sidebar button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white) !important;
+  font-weight: bold !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+
+.button-selected {
+  background-color: var(--color-primary);
+  color: var(--color-white) !important;
+  font-weight: bold !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+
+/* Card Styles */
+.card-styles {
+  box-shadow: 0px 0px 15px -1px var(--color-shadow);
+  border-radius: 20px;
+}
+
+/* Toolbar Component Styles */
+:host ::ng-deep .p-menubar,
+:host ::ng-deep .p-menubar-root-list {
+  background-color: var(--color-white) !important;
+}
+
+.bg-color-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-input{
+  background-color: rgba(48, 101, 208, 0.633);
+}
+
+.header-page-title{
+  color: var(--color-blue);
+  font-weight: bold;
+}
+
+.logo-app {
+  height: 5rem;
+  width: auto;
+}
+
+
+.span-styles {
+  background-color: var(--color-secondary);
+  border-radius: 12px;
+  color: var(--color-white);
+  font-weight: bold;
+}
+
+.name-span-styles {
+  background-color: var(--color-primary);
+  border-radius: 3px;
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.secondary-text {
+  color: var(--color-primary);
+}
+
+.button-custom-primary,
+.button-custom-secondary,
+.button-custom-success,
+.button-custom-danger {
+  color: var(--color-white) !important;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.button-custom-primary {
+  background-color: var(--color-blue) !important;
+}
+
+.button-custom-secondary {
+  background-color: var(--color-gray) !important;
+}
+
+.button-custom-success {
+  background-color: var(--color-green-dark) !important;
+}
+
+.button-custom-danger {
+  background-color: #f84c4c !important;
+}
+
+.btns-dialog-custom {
+  text-align: center;
+}
+
+
+.btn-info span {
+  background: var(--color-blue);
+  padding: 4px;
+  margin: 6px;
+}
+
+
+@media screen and (max-width: 834px){
+  .tablet-hidden{
+    display: none !important;
+  }
+
+  .tablet-show{
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 390px){
+  .movil-hidden{
+    display: none;
+  }
+}
+
+.submit-button {
+  background-color: var(--color-button-green) !important;
+  color: var(--color-white) !important;
+}
+
+.register-button{
+  color: var(--color-button-green);
+}
+
+.passwor-text-styles{
+  color: var(--color-blue);
+  font-size: 12px;
+}
+
+/* table */
+.table-bx {
+  border-radius: 18px;
+  box-shadow: 0px 0px 15px -1px var(--color-shadow);
+  margin-bottom: 40px;
+}
+
+
+.right-table{
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  width: 20% !important;
+}
+
+.left-table{
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+html {
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+  z-index: 10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(161, 161, 161);
+  border-radius: 5px;
+}
+
+.spinner-custom {
+  z-index: 12000 !important;
+}
+
+.cdk-drag-preview {
+  transition: transform 200ms ease;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+
+@layer utilities {
+  .animate-fade-in-up {
+    @apply transition-all duration-300 ease-out transform opacity-0 translate-y-4;
+    animation: fadeInUp 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
