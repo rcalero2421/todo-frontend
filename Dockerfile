@@ -12,10 +12,11 @@ RUN npm run build -- --configuration production
 # Etapa 2: nginx para servir archivos estáticos
 FROM nginx:stable-alpine
 
-COPY --from=builder /app/dist/todo-frontend /usr/share/nginx/html
+COPY --from=builder /app/dist/todo-frontend/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;", "-c", "/etc/nginx/nginx.conf"]
+
 
